@@ -1,32 +1,36 @@
 <div {{ attributes }}>
-    {{ form_start(form, {
-        attr: {
-            novalidate: true,
-            'data-action': 'live#action:prevent',
-            'data-live-action-param': 'saveData'
-        }
-    }) }}
+    {% if isSuccessful %}
+        <p>{{ successMessage ?? 'Successful' }}</p>
+    {% else %}
+        {{ form_start(form, {
+            attr: {
+                novalidate: true,
+                'data-action': 'live#action:prevent',
+                'data-live-action-param': 'saveData'
+            }
+        }) }}
 
-    <div class="form-group">
-        {{ form_label(form.fullName) }}
-        {{ form_widget(form.fullName) }}
-    </div>
+        <div class="form-group">
+            {{ form_label(form.fullName) }}
+            {{ form_widget(form.fullName) }}
+        </div>
 
-    <div class="form-group">
-        {{ form_label(form.email) }}
-        {{ form_widget(form.email) }}
-    </div>
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+        </div>
 
-    <div class="form-group">
-        {{ form_label(form.password) }}
-        {{ form_widget(form.password) }}
-    </div>
+        <div class="form-group">
+            {{ form_label(form.password) }}
+            {{ form_widget(form.password) }}
+        </div>
 
-    {{ form_rest(form) }}
+        {{ form_rest(form) }}
 
-    <button type="submit" id="submit_form" class="btn btn-primary" {{ this.validationErrors ? 'disabled' : '' }}>
-        Save
-    </button>
+        <button type="submit" id="submit_form" class="btn btn-primary" {{ this.validationErrors ? 'disabled' : '' }}>
+            Save
+        </button>
 
-    {{ form_end(form) }}
+        {{ form_end(form) }}
+    {% endif %}
 </div>

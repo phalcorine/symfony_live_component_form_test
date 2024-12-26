@@ -22,6 +22,8 @@ final class LiveForm extends AbstractController
 
     #[LiveProp]
     public bool $isSuccessful = false;
+    #[LiveProp]
+    public ?string $successMessage = null;
 
     protected function instantiateForm(): FormInterface
     {
@@ -45,7 +47,8 @@ final class LiveForm extends AbstractController
             'data' => $serializer->serialize($formData, 'json'),
         ]);
 
-        $this->redirectToRoute('liveform');
+        $this->isSuccessful = true;
+        $this->successMessage = "A user with email address: {$formData->getEmail()} was successfully added.";
     }
 
 }

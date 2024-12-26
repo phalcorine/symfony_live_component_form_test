@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
-#[Route('/live', name: 'live')]
+#[Route('/live', name: 'live_')]
 class LiveController extends AbstractController
 {
     public function __construct(
