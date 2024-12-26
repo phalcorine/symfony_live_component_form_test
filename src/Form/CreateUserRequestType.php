@@ -47,7 +47,6 @@ class CreateUserRequestType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => CreateUserRequestDto::class,
-            'csrf_protection' => false,
         ]);
     }
 }
